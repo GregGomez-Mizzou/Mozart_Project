@@ -15,7 +15,7 @@ public class Main {
 		}
 		/*notes: only using .toString for testing, not needed in general.
 		 * noteOnOff == 1 means note ON, noteOnOff == 0 means note OFF
-		 * 
+		 * remember to download the .csv file and set path to its location on your pc
 		*/
 	}
 
