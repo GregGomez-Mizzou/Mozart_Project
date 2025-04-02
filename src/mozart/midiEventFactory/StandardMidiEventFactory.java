@@ -14,6 +14,12 @@ public class StandardMidiEventFactory implements MidiEventFactory {
         return new MidiEvent(sm, tick);
     }
 
+	
+	/**
+	 * This implements the event factory so that the code can stay dynamic while
+	 * changing different settings. This version makes the off tick standard.
+	 */
+	
     @Override
     public MidiEvent createNoteOff(int tick, int note, int channel) throws InvalidMidiDataException {
         ShortMessage sm = new ShortMessage();
