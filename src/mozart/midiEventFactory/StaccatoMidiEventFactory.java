@@ -18,7 +18,6 @@ public class StaccatoMidiEventFactory implements MidiEventFactory {
         ShortMessage sm = new ShortMessage();
         sm.setMessage(ShortMessage.NOTE_OFF, channel, note, 0);
         return new MidiEvent(sm, tick - 120);
+        
     }
-
-
 }
