@@ -3,14 +3,9 @@ import mozart.eventdata.MidiEventData;
 import mozart.midiEventFactory.MidiEventFactory;
 import mozart.parser.MidiCsvParser;
 import java.util.ArrayList;
-
-import javax.sound.midi.InvalidMidiDataException;
-import javax.sound.midi.MidiEvent;
 import javax.sound.midi.MidiSystem;
 import javax.sound.midi.Sequence;
 import javax.sound.midi.Sequencer;
-import javax.sound.midi.ShortMessage;
-import javax.sound.midi.Synthesizer;
 import javax.sound.midi.Track;
 import mozart.abstractFactory.*;
 import instrumentStrategy.*;
@@ -33,6 +28,11 @@ public class Main {
 			notes: only using .toString for testing, not needed in general.
 			 * noteOnOff == 1 means note ON, noteOnOff == 0 means note OFF
 			 * remember to download the .csv file and set path to its location on your pc
+			 * 
+			 * 
+			 * THE SONG IS:
+			 * Billy Eilish - Bad Guy
+			 * 
 			
 			*/
 			
@@ -47,16 +47,16 @@ public class Main {
 			MidiEventFactory factory = factoryAbstract.createFactory();
 			
 			// Choose Instrument Strategy
-			// Trumpet
-			InstrumentStrategy instrumentStrategy = new TrumpetStrategy();
+			// Electric Base Guitar
+			InstrumentStrategy instrumentStrategy = new ElectricBaseGuitarStrategy();
 			instrumentStrategy.applyInstrument(track, 0);
+			
+			// Trumpet
+			instrumentStrategy = new TrumpetStrategy();
+			instrumentStrategy.applyInstrument(track, 1);
 			
 			// Piano
 			instrumentStrategy = new AcousticGrandPianoStrategy();
-			instrumentStrategy.applyInstrument(track, 1);
-			
-			// Electric Guitar
-			instrumentStrategy = new ElectricBaseGuitarStrategy();
 			instrumentStrategy.applyInstrument(track, 2);
 			
 			// Pitch Strategy
@@ -66,7 +66,7 @@ public class Main {
 				int modifiedNote = pitchStrategy.modifyPitch(event.getNote());
 				
 				// Call to modify to higher pitch
-				modifiedNote = pitchStrategy.modifyPitch(modifiedNote);
+				//modifiedNote = pitchStrategy.modifyPitch(modifiedNote);
 				
 				if(event.getNoteOnOff() == 1) {
 					track.add(factory.createNoteOn(event.getStartEndTick(), modifiedNote, event.getVelocity(), event.getChannel()));
