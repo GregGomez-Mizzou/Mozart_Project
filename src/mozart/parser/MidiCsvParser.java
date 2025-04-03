@@ -8,6 +8,11 @@ import java.util.ArrayList;
 
 public class MidiCsvParser {
 	
+	/**
+	 * Parses data from .csv file.
+	 * @param path location of the file
+	 * @return list of objects containing the data
+	 */
 	public static ArrayList<MidiEventData> parsedData(String path) {
 		ArrayList<MidiEventData> aList = new ArrayList<MidiEventData>();
 		try (Scanner scanner = new Scanner(new File(path))) {
