@@ -1,5 +1,6 @@
 package mozart.main;
 import mozart.eventdata.MidiEventData;
+import mozart.instrumentStrategy.*;
 import mozart.midiEventFactory.MidiEventFactory;
 import mozart.parser.MidiCsvParser;
 import java.util.ArrayList;
@@ -8,7 +9,6 @@ import javax.sound.midi.Sequence;
 import javax.sound.midi.Sequencer;
 import javax.sound.midi.Track;
 import mozart.abstractFactory.*;
-import instrumentStrategy.*;
 import mozart.pitch.*;
 
 
