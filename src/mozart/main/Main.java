@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.sound.midi.Sequence;
 import javax.sound.midi.Track;
 import mozart.abstractFactory.*;
+import instrumentStrategy.*;
 
 
 public class Main {
@@ -26,6 +27,9 @@ public class Main {
 			
 			// Choose Instrument Strategy
 			InstrumentStrategy instrumentStrategy = new ElectricBaseGuitarStrategy();
+			instrumentStrategy.applyInstrument(track, 0);
+			instrumentStrategy = new AcousticGrandPianoStrategy();
+			instrumentStrategy.applyInstrument(track, 1);
 			
 			
 			
