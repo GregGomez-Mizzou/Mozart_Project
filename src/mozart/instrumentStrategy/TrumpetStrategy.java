@@ -1,4 +1,4 @@
-package instrumentStrategy;
+package mozart.instrumentStrategy;
 import javax.sound.midi.*;
 
 public class TrumpetStrategy implements InstrumentStrategy {
