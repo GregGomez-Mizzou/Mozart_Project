@@ -4,9 +4,11 @@ import mozart.midiEventFactory.MidiEventFactory;
 import mozart.parser.MidiCsvParser;
 import java.util.ArrayList;
 import javax.sound.midi.Sequence;
+import javax.sound.midi.ShortMessage;
 import javax.sound.midi.Track;
 import mozart.abstractFactory.*;
 import instrumentStrategy.*;
+import mozart.pitch.*;
 
 
 public class Main {
@@ -31,7 +33,22 @@ public class Main {
 			instrumentStrategy = new AcousticGrandPianoStrategy();
 			instrumentStrategy.applyInstrument(track, 1);
 			
+			// Pitch Strategy
+			PitchStrategy pitchStrategy = new HigherPitchStrategy();
 			
+			for (MidiEventData event : midiEvents) {
+				int modifiedNote = pitchStrategy.modifyPitch(event.getNote());
+				
+				// Call to modify to higher pitch
+				modifiedNote = pitchStrategy.modifyPitch(modifiedNote);
+				
+				if(event.GetNoteOnOff() == ShortMessage.NOTE_ON) {
+					track.add(factory.createNoteOn(event.getStartEndTick(), modifiedNote, event.getVelocity(), event.getChannel()));
+				}
+				else {
+					track.add(factory.createNoteOff(event.getStartEndTick(), modifiedNote, event.getChannel()));
+				}
+			}
 			
 			
 			
