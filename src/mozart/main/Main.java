@@ -16,8 +16,8 @@ public class Main {
 
 	public static void main(String[] args) {
 		try {
-			// TODO Auto-generated method stub
-			String path = "C:\\Users\\sdmai\\Downloads\\mystery_song.csv";
+			
+			String path = "src/mystery_song.csv";
 			ArrayList<MidiEventData> events = MidiCsvParser.parsedData(path);
 			
 			/*
