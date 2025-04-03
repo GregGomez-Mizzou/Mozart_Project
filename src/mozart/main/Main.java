@@ -13,7 +13,7 @@ public class Main {
 	public static void main(String[] args) {
 		try {
 			// TODO Auto-generated method stub
-			String path = "C:\\Users\\sdmai\\Downloads\\mystery_song.csv";
+			String path = "src\\mystery_song.csv";
 			ArrayList<MidiEventData> events = MidiCsvParser.parsedData(path);
 			
 			Sequence sequence = new Sequence(Sequence.PPQ, 384);
@@ -25,7 +25,7 @@ public class Main {
 			MidiEventFactory factory = factoryAbstract.createFactory();
 			
 			// Choose Instrument Strategy
-			
+			InstrumentStrategy instrumentStrategy = new ElectricBaseGuitarStrategy();
 			
 			
 			
