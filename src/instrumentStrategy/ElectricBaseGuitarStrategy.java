@@ -12,7 +12,7 @@ public class ElectricBaseGuitarStrategy implements InstrumentStrategy {
 		
 		try {
             ShortMessage programChange = new ShortMessage();
-            programChange.setMessage(ShortMessage.PROGRAM_CHANGE, channel, 33, 0);
+            programChange.setMessage(ShortMessage.PROGRAM_CHANGE, channel, 34, 0);
             MidiEvent changeInstrument = new MidiEvent(programChange, 0);
             track.add(changeInstrument);
         } catch (InvalidMidiDataException e) {
